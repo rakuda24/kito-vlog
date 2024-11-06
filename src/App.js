@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 //ログイン後の処理
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LoginPage from './LoginPage';  // ログイン画面のコンポーネント
-import AfterLogin from './After-login';  // ログイン後に遷移する画面のコンポーネント
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import AfterLogin from './After-login.js';  // ログイン後に遷移する画面のコンポーネント
 
 function App() {
   // ログインしているユーザーの情報を管理するステート
@@ -45,13 +45,6 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // ログアウト処理
-  const handleLogout = () => {
-    auth.signOut();
-  };
-
-  
-
   return (
     <div className="App">
       <div className="container">
@@ -59,10 +52,9 @@ function App() {
           {user ? (
             // ログインしている場合の表示
             <Router>
-              <Switch>
-                <Route exact path="/" component={LoginPage} />
-                <Route path="/apter-login" component={AfterLogin} />
-              </Switch>
+              <Routes>
+                <Route path="/" element={<AfterLogin />} />
+              </Routes>
             </Router>
           ) : (
             // ログインしていない場合の表示
