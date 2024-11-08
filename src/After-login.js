@@ -20,8 +20,8 @@ const AfterLogin = () => {
   return (
     <div className="after-login-container">
       <div className="after-login-content">
-        <h2 className="after-login-heading">Welcome to the After-Login Page!</h2>
-        <p className="after-login-paragraph">This is the page you see after logging in.</p>
+        <h2 className="after-login-heading">Welcome to the Kito-Vlog Page!</h2>
+        <p className="after-login-paragraph">鬼頭の日常へ</p>
         <button onClick={handleLogout} className="logout-button">ログアウト</button>
       </div>
     </div>

@@ -50,7 +50,7 @@ const LoginModal = ({ show, handleClose, showSignUpModal }) => {
                   style={{ color: '#1266f1', cursor: 'pointer' }}
                   className="mb-4"
                   onClick={signInwithGoogle}
-                  size={26}
+                  size={70}
                 />
               </div>
               <p className="mb-4">または:</p>
@@ -74,7 +74,7 @@ const LoginModal = ({ show, handleClose, showSignUpModal }) => {
                 />
               </Form.Group>
               <div className="d-flex justify-content-end mb-5 ">
-                <a href="/password/reset" className='' >パスワードを忘れてしまった場合</a>
+                <a href="./PasswordReset" className='' >パスワードを忘れてしまった場合</a>
               </div>
               <button type="submit" className="btn btn-primary mb-5 w-100">サインイン</button>
             </Form>
