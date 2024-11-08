@@ -20,7 +20,7 @@ const AfterLogin = () => {
   useEffect(() => {
     // .container内に100個の .block 要素を追加
     const container = document.querySelector(".container");
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 5; i++) {
       const block = document.createElement("div");
       block.classList.add("block");
       container.appendChild(block);
