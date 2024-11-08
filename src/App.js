@@ -9,8 +9,8 @@ import { auth } from './firebase';
 //ログイン後の処理
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import AfterLogin from './After-login.js';  // ログイン後に遷移する画面のコンポーネント
-import BeforeLogin from './Before-login.js';
+import AfterLogin from './After-login/After-login.js';  // ログイン後に遷移する画面のコンポーネント
+import BeforeLogin from './Before-login/Before-login.js';
 
 function App() {
   // ログインしているユーザーの情報を管理するステート
