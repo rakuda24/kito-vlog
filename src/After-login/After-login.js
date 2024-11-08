@@ -33,11 +33,11 @@ const AfterLogin = () => {
 			targets: ".block",
 			translateX: function () {
 				// return Math.random() > 0.5 ? anime.random(-700, -150) : anime.random(150, 700);
-        return anime.random(-700, 700)
+        return anime.random(-950, 850)
 			},
 			translateY: function () {
         // return Math.random() > 0.5 ? anime.random(-380, -400) : anime.random(200, 450);
-        return anime.random(-380, 450)
+        return anime.random(-500, 450)
 			},
 			scale: function() {
 				return anime.random(0.5, 1)
