@@ -14,12 +14,12 @@ body {
 }
 
 .container {
-  position: relative;
+  position: relative; /* 親要素にも position: relative を追加 */
   width: 100%;
   height: 100%;
 }
 
-h2 {
+/* h2 {
   color: aqua;
   font-size: 6rem;
   text-align: center;
@@ -27,16 +27,21 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2; /* h2が前面に表示される */
-}
+  z-index: 2; /* h2が前面に表示される
+  white-space: nowrap;
+} */
 
 .block {
   position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: rgb(121, 116, 116);
-    box-shadow: 10px 10px 50px rgb(75, 74, 74);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgb(121, 116, 116);
+  box-shadow: 10px 10px 50px rgb(75, 74, 74);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 中心に配置 */
+  z-index: 1; /* blockを後ろに配置 */
 }
 
 /* ログアウトボタンのスタイル */
@@ -52,9 +57,45 @@ h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 3;
+  z-index: 10;
 }
 
 .logout-button:hover {
   background-color: aqua;
+}
+
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  /* h2 {
+    font-size: 3rem; 
+  } */
+
+  .block {
+    width: 100px; /* 円のサイズを小さく */
+    height: 100px;
+  }
+
+  .logout-button {
+    padding: 8px 16px; /* ボタンのサイズを小さく */
+    font-size: 0.9rem;
+    bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* h2 {
+    font-size: 2rem; /* より小さい画面でのフォントサイズ 
+  } */
+
+  .block {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logout-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    bottom: 10px;
+  }
 }

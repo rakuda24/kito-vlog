@@ -3,6 +3,7 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import './After-login.css';
 import anime from 'animejs/lib/anime.es.js';
+import imageSrc from './kitologo.jpg'
 
 const AfterLogin = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const AfterLogin = () => {
   useEffect(() => {
     // .container内に100個の .block 要素を追加
     const container = document.querySelector(".container");
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 20; i++) {
       const block = document.createElement("div");
       block.classList.add("block");
       container.appendChild(block);
@@ -31,13 +32,15 @@ const AfterLogin = () => {
 		anime({
 			targets: ".block",
 			translateX: function () {
-				return anime.random(-700, 700);
+				// return Math.random() > 0.5 ? anime.random(-700, -150) : anime.random(150, 700);
+        return anime.random(-700, 700)
 			},
 			translateY: function () {
-				return anime.random(-500, 500)
+        // return Math.random() > 0.5 ? anime.random(-380, -400) : anime.random(200, 450);
+        return anime.random(-380, 450)
 			},
 			scale: function() {
-				return anime.random(0.5, 2)
+				return anime.random(0.5, 1)
 			},
 			duration: 2500,
 			delay: anime.stagger(2),
@@ -51,9 +54,10 @@ const AfterLogin = () => {
   return (
 	<>
 	<div className="container">
-    	<div>
-        	<h2>Animate JavaScript</h2>
-    	</div>
+    <img src={imageSrc} alt="Beautiful landscape"/>
+    {/* <div>
+        <h2>KITO-VLOG</h2>
+    </div> */}
 	</div>
 	<button onClick={handleLogout} className="logout-button">ログアウト</button>
 	</>

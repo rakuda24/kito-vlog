@@ -29,23 +29,30 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: rgb(225, 220, 220);
+  color: rgb(255, 255, 255);
   background-color: rgba(95, 193, 198, 0.5);
   padding: 0%;
   border-radius: 5px;
 }
 
-/* ボタンのスタイル */
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: #000000;
+/* 丸いボタンのスタイル */
+.login-button {
+  padding: 15px 20px; /* サイズ調整 */
+  font-size: 16px; /*文字のsize*/
+  color: #f0f0f0; /*文字の色*/
+  background-color: rgba(95, 193, 198, 0.5);
   border: none;
-  border-radius: 5px;
+  border-radius: 50%; /* 丸い形にする */
   cursor: pointer;
+  margin: auto;
+  margin-top: 100px; /* ボタンの上に余白を追加 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px; /* 幅を設定 */
+  height: 100px; /* 高さを設定 */
 }
 
 button:hover {
-  background-color: #67aac7;
+  background-color: #ffffff;
 }

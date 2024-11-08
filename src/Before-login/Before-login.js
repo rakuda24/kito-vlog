@@ -65,7 +65,7 @@ function Before_login() {
           <div className="right">
             <div>
               <h1>Welcome to Kito-Vlog</h1>
-              <Button onClick={handleLoginClick}>日常へ</Button>
+              <button onClick={handleLoginClick} className="login-button">日常へ</button>
             </div>
           </div>
         </>
