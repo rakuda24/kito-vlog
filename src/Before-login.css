@@ -1,0 +1,42 @@
+/* 背景画像設定 */
+.Before {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./1.png'); /* 画像ファイルのパス */
+    background-size: 80%; /* 画像を画面全体に拡大 */
+    background-position: center; /* 画像を中央に配置 */
+  }
+  
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  
+  }
+  
+  /* オーバーレイの中央配置 */
+  .right {
+    margin-right: 10px;
+    text-align: center;
+    color: rgb(225, 220, 220);
+    background-color: rgba(95, 193, 198, 0.5); 
+    padding: 15%;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #67aac7;
+  }
+  
