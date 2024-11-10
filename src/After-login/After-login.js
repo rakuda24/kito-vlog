@@ -3,9 +3,10 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import './After-login.css';
 import anime from 'animejs/lib/anime.es.js';
-import imageSrc from './kitologo.jpg';
+import imageSrc from './kitologo.png';
 import { IonIcon } from '@ionic/react';
 import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
+import imageOni from './oni.png';
 
 const AfterLogin = () => {
   const navigate = useNavigate();
@@ -22,13 +23,13 @@ const AfterLogin = () => {
 
   useEffect(() => {
     // Floating blocks animation setup
-    const container = document.querySelector(".container"); // container要素を指定
+    const container = document.querySelector(".container");
     const blocks = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 30; i++) {
       const block = document.createElement("div");
       block.classList.add("block");
       container.appendChild(block);
-      blocks.push(block); // 配列に追加して後で削除できるようにする
+      blocks.push(block); 
     }
 
     function animateBlocks() {
@@ -114,10 +115,12 @@ const AfterLogin = () => {
           </li>
         </ul>
       </div>
-
+      
       <div className="container">
         <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
+        <img src={imageOni} alt="Beautiful landscape" className="imageOni"/>
       </div>
+      
     </>
   );
 };

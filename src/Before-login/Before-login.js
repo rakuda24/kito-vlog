@@ -9,7 +9,7 @@ import { auth } from '../firebase.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import AfterLogin from '../After-login/After-login.js';
-import imageSrc from './1.png'
+import imageSrc from './oni.png'
 
 function Before_login() {
   // ログインしているユーザーの情報を管理するステート

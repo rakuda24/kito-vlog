@@ -30,7 +30,7 @@
   align-items: center;
   text-align: center;
   color: rgb(255, 255, 255);
-  background-color: rgba(95, 193, 198, 0.5);
+  background-color: #254c30;
   padding: 0%;
   border-radius: 5px;
 }
@@ -40,7 +40,7 @@
   padding: 15px 20px; /* サイズ調整 */
   font-size: 16px; /*文字のsize*/
   color: #f0f0f0; /*文字の色*/
-  background-color: rgba(95, 193, 198, 0.5);
+  background-color:rgb(22 53 31);
   border: none;
   border-radius: 50%; /* 丸い形にする */
   cursor: pointer;
@@ -54,5 +54,5 @@
 }
 
 button:hover {
-  background-color: #ffffff;
+  background-color: rgb(48, 117, 67);
 }
