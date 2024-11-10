@@ -3,7 +3,9 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import './After-login.css';
 import anime from 'animejs/lib/anime.es.js';
-import imageSrc from './kitologo.jpg'
+import imageSrc from './kitologo.jpg';
+import { IonIcon } from '@ionic/react';
+import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
 
 const AfterLogin = () => {
   const navigate = useNavigate();
@@ -19,48 +21,100 @@ const AfterLogin = () => {
   };
 
   useEffect(() => {
-    // .container内に100個の .block 要素を追加
-    const container = document.querySelector(".container");
-    for (let i = 0; i < 20; i++) {
+    const container = document.querySelector("body");
+    for (let i = 0; i < 10; i++) {
       const block = document.createElement("div");
       block.classList.add("block");
       container.appendChild(block);
     }
 
-    // anime.js を使ってアニメーションを開始
     function animateBlocks() {
-		anime({
-			targets: ".block",
-			translateX: function () {
-				// return Math.random() > 0.5 ? anime.random(-700, -150) : anime.random(150, 700);
-        return anime.random(-950, 850)
-			},
-			translateY: function () {
-        // return Math.random() > 0.5 ? anime.random(-380, -400) : anime.random(200, 450);
-        return anime.random(-500, 450)
-			},
-			scale: function() {
-				return anime.random(0.5, 1)
-			},
-			duration: 2500,
-			delay: anime.stagger(2),
-			complete: animateBlocks,
-		});
+      anime({
+        targets: ".block",
+        translateX: () => anime.random(-950, 850),
+        translateY: () => anime.random(-500, 450),
+        scale: () => anime.random(0.5, 2.5),
+        duration: 2500,
+        delay: anime.stagger(2),
+        complete: animateBlocks,
+      });
     }
 
     animateBlocks();
+
+    const listItems = document.querySelectorAll(".list");
+
+    function activeLink() {
+      listItems.forEach(item => {
+        item.classList.remove("active");
+      });
+      this.classList.add("active");
+    }
+
+    listItems.forEach((item) => {
+      item.addEventListener("click", activeLink);
+    });
+
+    return () => {
+      listItems.forEach((item) => {
+        item.removeEventListener("click", activeLink);
+      });
+    };
   }, []);
 
   return (
-	<>
-	<div className="container">
-    <img src={imageSrc} alt="Beautiful landscape"/>
-    {/* <div>
-        <h2>KITO-VLOG</h2>
-    </div> */}
-	</div>
-	<button onClick={handleLogout} className="logout-button">ログアウト</button>
-	</>
+    <>
+      <div className="navigation">
+        <ul>
+          <li className="list active">
+            <a href="#">
+              <span className="icon"><IonIcon icon={homeOutline} /></span>
+              <span className="title">ホーム</span>
+            </a>
+          </li>
+          <li className="list">
+            <a href="#">
+              <span className="icon"><IonIcon icon={personCircleOutline} /></span>
+              <span className="title">プロフィール</span>
+            </a>
+          </li>
+          <li className="list">
+            <a href="#">
+              <span className="icon"><IonIcon icon={tvOutline} /></span>
+              <span className="title">チャンネル</span>
+            </a>
+          </li>
+          <li className="list">
+            <a href="#">
+              <span className="icon"><IonIcon icon={settingsOutline} /></span>
+              <span className="title">設定</span>
+            </a>
+          </li>
+          <li className="list">
+            <a href="#">
+              <span className="icon"><IonIcon icon={idCardOutline} /></span>
+              <span className="title">個人情報</span>
+            </a>
+          </li>
+          <li className="list">
+            <a href="#">
+              <span className="icon"><IonIcon icon={helpCircleOutline} /></span>
+              <span className="title">ヘルプ</span>
+            </a>
+          </li>
+          <li className="list" onClick={handleLogout}>
+            <a href="#">
+              <span className="icon"><IonIcon icon={exitOutline} /></span>
+              <span className="title">サインアウト</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="container">
+        <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
+      </div>
+    </>
   );
 };
 

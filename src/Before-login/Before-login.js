@@ -2,7 +2,6 @@ import './Before-login.css';
 import React, { useState, useEffect } from 'react';
 import LoginModal from '../components/LoginModal.js';
 import SignUpModal from '../components/SignUpModal.js';
-import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase.js';
