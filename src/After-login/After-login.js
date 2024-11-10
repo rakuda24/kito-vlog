@@ -21,11 +21,14 @@ const AfterLogin = () => {
   };
 
   useEffect(() => {
-    const container = document.querySelector("body");
+    // Floating blocks animation setup
+    const container = document.querySelector(".container"); // container要素を指定
+    const blocks = [];
     for (let i = 0; i < 10; i++) {
       const block = document.createElement("div");
       block.classList.add("block");
       container.appendChild(block);
+      blocks.push(block); // 配列に追加して後で削除できるようにする
     }
 
     function animateBlocks() {
@@ -59,6 +62,7 @@ const AfterLogin = () => {
       listItems.forEach((item) => {
         item.removeEventListener("click", activeLink);
       });
+      blocks.forEach(block => container.removeChild(block)); // 追加したブロックを削除
     };
   }, []);
 
