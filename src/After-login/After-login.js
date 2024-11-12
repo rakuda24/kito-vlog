@@ -115,12 +115,13 @@ const AfterLogin = () => {
           </li>
         </ul>
       </div>
-
+      
       <div className="container">
         <h1>ホーム</h1>
         <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
-        <img src={imageOni} alt="Beautiful landscape" className="imageOni" />
+        <img src={imageOni} alt="Beautiful landscape" className="imageOni"/>
       </div>
+      
     </>
   );
 };

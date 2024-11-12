@@ -18,13 +18,6 @@ body {
   height: 100vh;
 }
 
-h1 {
-  position: absolute;
-  width: 500px;
-  height: auto;
-  z-index: 10;
-}
-
 .block {
   position: absolute;
   width: 100px;
@@ -80,9 +73,9 @@ h1 {
   height: 100vh;
   width: 70px;
   position: relative;
-  background-color: #254c30;
+  background-color: rgb(40, 42, 42);
   box-shadow: 10px 0 0 rgb(241 192 28);
-  border-left: 10px solid #254c30;
+  border-left: 10px solid rgb(40, 42, 42);
   overflow-x: hidden;
   transition: all 0.5s;
   z-index: 20;
