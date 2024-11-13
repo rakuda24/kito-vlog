@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import './After-login.css';
@@ -10,7 +10,7 @@ import imageOni from './oni.png';
 
 const AfterLogin = () => {
   const navigate = useNavigate();
-  let animeInstance = null;
+  const animeInstance = useRef(null); // useRefを使ってanimeInstanceを保持
 
   const handleLogout = () => {
     auth.signOut()
@@ -25,51 +25,28 @@ const AfterLogin = () => {
   useEffect(() => {
     // Floating blocks animation setup
     const container = document.querySelector(".container");
-    
-    if (!container.querySelector(".block")) {
-      const blocks = [];
-      for (let i = 0; i < 30; i++) {
-        const block = document.createElement("div");
-        block.classList.add("block");
-        container.appendChild(block);
-        blocks.push(block);
-      }
-
-      function animateBlocks() {
-        animeInstance = anime({
-          targets: ".block",
-          translateX: () => anime.random(-950, 850),
-          translateY: () => anime.random(-500, 450),
-          scale: () => anime.random(0.5, 2.5),
-          duration: 2500,
-          delay: anime.stagger(30),
-          complete: animateBlocks,
-        });
-      }
-
-      animateBlocks();
-
-      // タブのアクティブ・非アクティブを検知してアニメーションを制御
-      const handleVisibilityChange = () => {
-        if (document.visibilityState === "hidden") {
-          animeInstance.pause(); // タブが非アクティブになったらアニメーションを停止
-        } else {
-          animeInstance.play();  // タブがアクティブになったらアニメーションを再開
-        }
-      };
-
-      document.addEventListener("visibilitychange", handleVisibilityChange);
-
-      // クリーンアップ関数でアニメーションと要素を削除
-      return () => {
-        document.removeEventListener("visibilitychange", handleVisibilityChange);
-        anime.remove(".block");  // アニメーションを解除
-        blocks.forEach(block => container.removeChild(block)); // 追加したブロックを削除
-      };
+    const blocks = [];
+    for (let i = 0; i < 30; i++) {
+      const block = document.createElement("div");
+      block.classList.add("block");
+      container.appendChild(block);
+      blocks.push(block);
     }
-  }, []);
 
-  useEffect(() => {
+    function animateBlocks() {
+      animeInstance.current = anime({
+        targets: ".block",
+        translateX: () => anime.random(-950, 850),
+        translateY: () => anime.random(-500, 450),
+        scale: () => anime.random(0.5, 2.5),
+        duration: 2500,
+        delay: anime.stagger(30),
+        complete: animateBlocks,
+      });
+    }
+
+    animateBlocks();
+
     const listItems = document.querySelectorAll(".list");
 
     function activeLink() {
@@ -84,9 +61,12 @@ const AfterLogin = () => {
     });
 
     return () => {
+      // クリーンアップ: アニメーションを停止し、イベントリスナーとブロックを削除
+      if (animeInstance.current) animeInstance.current.pause();
       listItems.forEach((item) => {
         item.removeEventListener("click", activeLink);
       });
+      blocks.forEach(block => container.removeChild(block));
     };
   }, []);
 
