@@ -10,6 +10,7 @@ import imageOni from './oni.png';
 
 const AfterLogin = () => {
   const navigate = useNavigate();
+  let animeInstance = null;
 
   const handleLogout = () => {
     auth.signOut()
@@ -24,28 +25,51 @@ const AfterLogin = () => {
   useEffect(() => {
     // Floating blocks animation setup
     const container = document.querySelector(".container");
-    const blocks = [];
-    for (let i = 0; i < 30; i++) {
-      const block = document.createElement("div");
-      block.classList.add("block");
-      container.appendChild(block);
-      blocks.push(block); 
+    
+    if (!container.querySelector(".block")) {
+      const blocks = [];
+      for (let i = 0; i < 30; i++) {
+        const block = document.createElement("div");
+        block.classList.add("block");
+        container.appendChild(block);
+        blocks.push(block);
+      }
+
+      function animateBlocks() {
+        animeInstance = anime({
+          targets: ".block",
+          translateX: () => anime.random(-950, 850),
+          translateY: () => anime.random(-500, 450),
+          scale: () => anime.random(0.5, 2.5),
+          duration: 2500,
+          delay: anime.stagger(30),
+          complete: animateBlocks,
+        });
+      }
+
+      animateBlocks();
+
+      // タブのアクティブ・非アクティブを検知してアニメーションを制御
+      const handleVisibilityChange = () => {
+        if (document.visibilityState === "hidden") {
+          animeInstance.pause(); // タブが非アクティブになったらアニメーションを停止
+        } else {
+          animeInstance.play();  // タブがアクティブになったらアニメーションを再開
+        }
+      };
+
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+
+      // クリーンアップ関数でアニメーションと要素を削除
+      return () => {
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+        anime.remove(".block");  // アニメーションを解除
+        blocks.forEach(block => container.removeChild(block)); // 追加したブロックを削除
+      };
     }
+  }, []);
 
-    function animateBlocks() {
-      anime({
-        targets: ".block",
-        translateX: () => anime.random(-950, 850),
-        translateY: () => anime.random(-500, 450),
-        scale: () => anime.random(0.5, 2.5),
-        duration: 2500,
-        delay: anime.stagger(2),
-        complete: animateBlocks,
-      });
-    }
-
-    animateBlocks();
-
+  useEffect(() => {
     const listItems = document.querySelectorAll(".list");
 
     function activeLink() {
@@ -63,7 +87,6 @@ const AfterLogin = () => {
       listItems.forEach((item) => {
         item.removeEventListener("click", activeLink);
       });
-      blocks.forEach(block => container.removeChild(block)); // 追加したブロックを削除
     };
   }, []);
 
