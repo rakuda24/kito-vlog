@@ -56,6 +56,7 @@ const SignUpModal = ({ show, handleClose, showLoginModal }) => {
                   style={{ color: '#1266f1', fontSize: '25px', cursor: 'pointer' }}
                   className="mb-4"
                   onClick={signInwithGoogle}
+                  size={70}
                 />
               </div>
               <p className="mb-4">または:</p>
