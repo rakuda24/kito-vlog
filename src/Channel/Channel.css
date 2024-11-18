@@ -187,4 +187,61 @@
       z-index: 9;
     }
   }
-  
+/* ページ全体をflexレイアウトにして、コンテンツが最下部に来るように調整 */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;  /* 画面全体の高さ */
+}
+
+.content {
+  flex-grow: 1;   /* 残りのスペースを占める */
+  padding: 20px;
+  overflow-y: auto; /* コンテンツが多い場合にスクロール可能 */
+}
+
+.new-post-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-button:hover {
+  background-color: #45a049;
+}
+/* フォームを画面下部に配置 */
+.new-post-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999; /* 他のコンテンツの上に表示 */
+}
+
+.post-button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-button:hover {
+  background-color: #45a049;
+}

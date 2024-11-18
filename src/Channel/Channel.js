@@ -6,6 +6,8 @@ import imageSrc from './kitologo.png';
 import { IonIcon } from '@ionic/react';
 import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
 import imageOni from './oni.png';
+import Allposts from './post/src/AllPosts'; 
+import NewPost from './post/src/NewPost';    // 実際のパスを確認
 
 const Channel = () => {
   const navigate = useNavigate();
@@ -102,6 +104,8 @@ const Channel = () => {
         <h1>チャンネル</h1>
         <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
         <img src={imageOni} alt="Beautiful landscape" className="imageOni" />
+        {activeTab === 'channel' && <Allposts />}
+        <NewPost /> 
       </div>
     </>
   );
