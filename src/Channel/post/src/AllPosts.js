@@ -1,6 +1,6 @@
 import { collection, onSnapshot, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import db from './firebase';
+import firestore from '../../../firebase';
 
 const getStrTime = (time) => {
     let t = new Date(time);
@@ -26,7 +26,7 @@ const AllPosts = () => {
     const [currentPost, setCurrentPost] = useState({ id: '', content: '' }); // 現在編集中の投稿（内容のみ）
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, 'posts'), (snapshot) => {
+        const unsubscribe = onSnapshot(collection(firestore, 'posts'), (snapshot) => {
             setPosts(
                 snapshot.docs
                     .map((doc) => ({ id: doc.id, ...doc.data() }))
@@ -40,7 +40,7 @@ const AllPosts = () => {
         const confirmDelete = window.confirm("削除しますか？");
         if (confirmDelete) {
             try {
-                await deleteDoc(doc(db, 'posts', id)); // 投稿を削除
+                await deleteDoc(doc(firestore, 'posts', id)); // 投稿を削除
                 alert("投稿が削除されました。");
             } catch (error) {
                 console.log("削除に失敗しました:", error);
@@ -55,7 +55,7 @@ const AllPosts = () => {
 
     const handleUpdate = async () => {
         try {
-            await updateDoc(doc(db, 'posts', currentPost.id), {
+            await updateDoc(doc(firestore, 'posts', currentPost.id), {
                 content: currentPost.content, // 内容のみ更新
                 created_at: new Date().getTime(), // 更新日時を設定
             });

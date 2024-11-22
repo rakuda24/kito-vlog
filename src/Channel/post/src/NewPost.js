@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import db from "./firebase";
+import firestore from '../../../firebase';
 
 const NewPost = () => {
     const [username, setUsername] = useState(""); // ユーザー名
@@ -26,7 +26,7 @@ const NewPost = () => {
                 postData.image = URL.createObjectURL(file); // 画像URLを保存
             }
 
-            await addDoc(collection(db, "posts"), postData);
+            await addDoc(collection(firestore, "posts"), postData);
             setUsername('');
             setContent('');
             setFile(null);
