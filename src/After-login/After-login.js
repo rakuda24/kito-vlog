@@ -4,13 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import './After-login.css';
 import anime from 'animejs/lib/anime.es.js';
 import imageSrc from './kitologo.png';
-import { IonIcon } from '@ionic/react';
 import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
 import imageOni from './oni.png';
 
 const AfterLogin = () => {
   const navigate = useNavigate();
-  const animeInstance = useRef(null); // useRefを使ってanimeInstanceを保持
+  // const animeInstance = useRef(null); // useRefを使ってanimeInstanceを保持
 
   const handleLogout = () => {
     auth.signOut()
@@ -22,9 +21,17 @@ const AfterLogin = () => {
       });
   };
 
+  function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+
   useEffect(() => {
-    // Floating blocks animation setup
-    const container = document.querySelector(".container");
+    const container = document.querySelector(".Afterlogin-container");
     const blocks = [];
     for (let i = 0; i < 30; i++) {
       const block = document.createElement("div");
@@ -36,8 +43,8 @@ const AfterLogin = () => {
     function animateBlocks() {
       animeInstance.current = anime({
         targets: ".block",
-        translateX: () => anime.random(-950, 850),
-        translateY: () => anime.random(-500, 450),
+        translateX: () => anime.random(0, 0),
+        translateY: () => anime.random(0, 0),
         scale: () => anime.random(0.5, 2.5),
         duration: 2500,
         delay: anime.stagger(30),
@@ -46,6 +53,8 @@ const AfterLogin = () => {
     }
 
     animateBlocks();
+
+    
 
     const listItems = document.querySelectorAll(".list");
 
@@ -61,7 +70,6 @@ const AfterLogin = () => {
     });
 
     return () => {
-      // クリーンアップ: アニメーションを停止し、イベントリスナーとブロックを削除
       if (animeInstance.current) animeInstance.current.pause();
       listItems.forEach((item) => {
         item.removeEventListener("click", activeLink);
@@ -72,58 +80,28 @@ const AfterLogin = () => {
 
   return (
     <>
-      <div className="navigation">
-        <ul>
-          <li className="list active">
-            <a href="#">
-              <span className="icon"><IonIcon icon={homeOutline} /></span>
-              <span className="title">ホーム</span>
-            </a>
-          </li>
-          <li className="list">
-            <Link to="/profile" className="list">
-              <span className="icon"><IonIcon icon={personCircleOutline} /></span>
-              <span className="title">プロフィール</span>
-            </Link>
-          </li>
-          <li className="list">
-            <Link to="/channel" className="list"> 
-              <span className="icon"><IonIcon icon={tvOutline} /></span>
-              <span className="title">チャンネル</span>
-            </Link>
-          </li>
-          <li className="list">
-            <Link to="/setting" className="list"> 
-              <span className="icon"><IonIcon icon={settingsOutline} /></span>
-              <span className="title">設定</span>
-            </Link>
-          </li>
-          <li className="list">
-            <a href="#">
-              <span className="icon"><IonIcon icon={idCardOutline} /></span>
-              <span className="title">個人情報</span>
-            </a>
-          </li>
-          <li className="list">
-            <a href="#">
-              <span className="icon"><IonIcon icon={helpCircleOutline} /></span>
-              <span className="title">ヘルプ</span>
-            </a>
-          </li>
-          <li className="list" onClick={handleLogout}>
-            <a href="#">
-              <span className="icon"><IonIcon icon={exitOutline} /></span>
-              <span className="title">サインアウト</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      
-      <div className="container">
-        <h1>ホーム</h1>
-        <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
-        <img src={imageOni} alt="Beautiful landscape" className="imageOni"/>
-      </div>
+    <div className="Afterlogin-container">
+        <nav>
+          <ul class="sidebar">
+              <li onClick={hideSidebar}><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+              <li><a href="#">Home</a></li>
+              <li><Link to="/profile">Profile</Link></li>
+              <li><Link to="/channel">Channel</Link></li>
+              <li><a href="#">Logout</a></li>
+          </ul>
+          <ul>
+              <li class="title"><a href="#">KITO</a></li>
+              <li class="hideOnMobile"><a href="#">Home</a></li>
+              <li class="hideOnMobile"><Link to="/profile">Profile</Link></li>
+              <li class="hideOnMobile"><Link to="/channel">Channel</Link></li>
+              <li class="hideOnMobile" ><a href="#" onClick={handleLogout}>Logout</a></li>
+              <li class="menu-button" onClick={showSidebar}><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+          </ul>
+      </nav>
+      <p>Home</p>
+      <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
+      <img src={imageOni} alt="Beautiful landscape" className="imageOni"/>
+    </div>
       
     </>
   );

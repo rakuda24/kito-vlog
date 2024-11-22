@@ -1,110 +1,112 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import './Profile.css';
+import anime from 'animejs/lib/anime.es.js';
 import imageSrc from './kitologo.png';
-import { IonIcon } from '@ionic/react';
 import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
 import imageOni from './oni.png';
 
-const Profile = () => {
+const AfterLogin = () => {
   const navigate = useNavigate();
-
-  // アクティブなタブを管理する状態
-  const [activeTab, setActiveTab] = useState('profile');
+  const animeInstance = useRef(null); // useRefを使ってanimeInstanceを保持
 
   const handleLogout = () => {
     auth.signOut()
       .then(() => {
-        navigate('/');  // ログアウト後、ホーム画面へ遷移
+        navigate('/');  // ログアウト時にホーム画面に遷移
       })
       .catch((error) => {
         console.error('ログアウトに失敗しました:', error);
       });
   };
 
-  // タブがクリックされたときにアクティブタブを更新する関数
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName);
-  };
+  function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+
+  useEffect(() => {
+    // Floating blocks animation setup
+    const container = document.querySelector(".Profile-container");
+    const blocks = [];
+    for (let i = 0; i < 30; i++) {
+      const block = document.createElement("div");
+      block.classList.add("block");
+      container.appendChild(block);
+      blocks.push(block);
+    }
+
+    function animateBlocks() {
+      animeInstance.current = anime({
+        targets: ".block",
+        translateX: () => anime.random(0, 0),
+        translateY: () => anime.random(0, 0),
+        scale: () => anime.random(0.5, 2.5),
+        duration: 2500,
+        delay: anime.stagger(30),
+        complete: animateBlocks,
+      });
+    }
+
+    animateBlocks();
+
+    
+
+    const listItems = document.querySelectorAll(".list");
+
+    function activeLink() {
+      listItems.forEach(item => {
+        item.classList.remove("active");
+      });
+      this.classList.add("active");
+    }
+
+    listItems.forEach((item) => {
+      item.addEventListener("click", activeLink);
+    });
+
+    return () => {
+      // クリーンアップ: アニメーションを停止し、イベントリスナーとブロックを削除
+      if (animeInstance.current) animeInstance.current.pause();
+      listItems.forEach((item) => {
+        item.removeEventListener("click", activeLink);
+      });
+      blocks.forEach(block => container.removeChild(block));
+    };
+  }, []);
 
   return (
     <>
-      <div className="navigation">
-        <ul>
-          <li
-            className={`list ${activeTab === 'home' ? 'active' : ''}`}
-            onClick={() => handleTabClick('home')}
-          >
-            <Link to="/" className="list">
-              <span className="icon"><IonIcon icon={homeOutline} /></span>
-              <span className="title">ホーム</span>
-            </Link>
-          </li>
-          <li
-            className={`list ${activeTab === 'profile' ? 'active' : ''}`}
-            onClick={() => handleTabClick('profile')}
-          >
-            <a href="#">
-              <span className="icon"><IonIcon icon={personCircleOutline} /></span>
-              <span className="title">プロフィール</span>
-            </a>
-          </li>
-          <li
-            className={`list ${activeTab === 'channel' ? 'active' : ''}`}
-            onClick={() => handleTabClick('channel')}
-          >
-            <Link to="/channel" className="list">
-              <span className="icon"><IonIcon icon={tvOutline} /></span>
-              <span className="title">チャンネル</span>
-            </Link>
-          </li>
-          <li
-            className={`list ${activeTab === 'settings' ? 'active' : ''}`}
-            onClick={() => handleTabClick('settings')}
-          >
-            <Link to="/setting" className="list">
-              <span className="icon"><IonIcon icon={settingsOutline} /></span>
-              <span className="title">設定</span>
-            </Link>
-          </li>
-          <li
-            className={`list ${activeTab === 'personalInfo' ? 'active' : ''}`}
-            onClick={() => handleTabClick('personalInfo')}
-          >
-            <a href="#">
-              <span className="icon"><IonIcon icon={idCardOutline} /></span>
-              <span className="title">個人情報</span>
-            </a>
-          </li>
-          <li
-            className={`list ${activeTab === 'help' ? 'active' : ''}`}
-            onClick={() => handleTabClick('help')}
-          >
-            <a href="#">
-              <span className="icon"><IonIcon icon={helpCircleOutline} /></span>
-              <span className="title">ヘルプ</span>
-            </a>
-          </li>
-          <li
-            className="list"
-            onClick={handleLogout}
-          >
-            <a href="#">
-              <span className="icon"><IonIcon icon={exitOutline} /></span>
-              <span className="title">サインアウト</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div className="container">
-        <h1>プロフィール</h1>
-        <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
-        <img src={imageOni} alt="Beautiful landscape" className="imageOni" />
-      </div>
+    <div className="Afterlogin-container">
+        <nav>
+          <ul class="sidebar">
+              <li onClick={hideSidebar}><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><a href="#">Profile</a></li>
+              <li><Link to="/channel">Channel</Link></li>
+              <li><a href="#">Logout</a></li>
+          </ul>
+          <ul>
+              <li class="title"><a href="#">KITO</a></li>
+              <li class="hideOnMobile"><Link to="/">Home</Link></li>
+              <li class="hideOnMobile"><a href="#">Profile</a></li>
+              <li class="hideOnMobile"><Link to="/channel">Channel</Link></li>
+              <li class="hideOnMobile" ><a href="#" onClick={handleLogout}>Logout</a></li>
+              <li class="menu-button" onClick={showSidebar}><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+          </ul>
+      </nav>
+      <p>Profile</p>
+      <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
+      <img src={imageOni} alt="Beautiful landscape" className="imageOni"/>
+    </div>
+      
     </>
   );
 };
 
-export default Profile;
+export default AfterLogin;
