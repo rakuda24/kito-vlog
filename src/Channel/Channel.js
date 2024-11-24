@@ -9,7 +9,7 @@ import imageOni from './oni.png';
 
 const Channel = () => {
   const navigate = useNavigate();
-//   const animeInstance = useRef(null); // useRefを使ってanimeInstanceを保持
+  const animeInstance = useRef(null); 
 
   const handleLogout = () => {
     auth.signOut()
@@ -31,7 +31,6 @@ const Channel = () => {
     }
 
   useEffect(() => {
-    
     const container = document.querySelector(".Channel-container");
     const blocks = [];
     for (let i = 0; i < 30; i++) {

@@ -9,7 +9,7 @@ import imageOni from './oni.png';
 
 const AfterLogin = () => {
   const navigate = useNavigate();
-  const animeInstance = useRef(null); // useRefを使ってanimeInstanceを保持
+  const animeInstance = useRef(null); 
 
   const handleLogout = () => {
     auth.signOut()
@@ -31,7 +31,6 @@ const AfterLogin = () => {
     }
 
   useEffect(() => {
-    // Floating blocks animation setup
     const container = document.querySelector(".Profile-container");
     const blocks = [];
     for (let i = 0; i < 30; i++) {
@@ -82,7 +81,7 @@ const AfterLogin = () => {
 
   return (
     <>
-    <div className="Afterlogin-container">
+    <div className="Profile-container">
         <nav>
           <ul class="sidebar">
               <li onClick={hideSidebar}><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
