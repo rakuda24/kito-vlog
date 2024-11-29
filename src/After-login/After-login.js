@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import './After-login.css';
 import anime from 'animejs/lib/anime.es.js';
 import imageSrc from './kitologo.png';
-import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
 import imageOni from './oni.png';
 
 const AfterLogin = () => {
@@ -90,12 +89,12 @@ const AfterLogin = () => {
           <li><a href="#">Logout</a></li>
         </ul>
         <ul>
-          <li class="title"><a href="#">KITO</a></li>
+          <li class="title"><a href="">KITO</a></li>
           <li class="hideOnMobile"><a href="#">Home</a></li>
           <li class="hideOnMobile"><Link to="/profile">Profile</Link></li>
           <li class="hideOnMobile"><Link to="/channel">Channel</Link></li>
           <li class="hideOnMobile" ><a href="#" onClick={handleLogout}>Logout</a></li>
-          <li class="menu-button" onClick={showSidebar}><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+          <li class="menu-button" onClick={showSidebar}><a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
         </ul>
       </nav>
       <div className='image-container'>

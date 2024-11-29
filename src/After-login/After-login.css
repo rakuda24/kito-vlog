@@ -48,7 +48,8 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #e2e2e2;
+  /* background-color: #e2e2e2; */
+  color: #314b71;
 }
 
 nav li:first-child {
@@ -92,15 +93,7 @@ nav li:first-child {
 }
 
 .block {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: rgb(0, 0, 0);
-  opacity: .5;
-  box-shadow: 10px 10px 50px rgb(75, 74, 74);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  
 }
 
 .kitologo-image {
