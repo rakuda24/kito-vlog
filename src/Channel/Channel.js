@@ -6,6 +6,8 @@ import anime from 'animejs/lib/anime.es.js';
 import imageSrc from './kitologo.png';
 import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
 import imageOni from './oni.png';
+import Allposts from './post/src/AllPosts'; 
+import NewPost from './post/src/NewPost';
 
 const Channel = () => {
   const navigate = useNavigate();
@@ -100,10 +102,11 @@ const Channel = () => {
           </ul>
       </nav>
       <p>Channel</p>
+      <Allposts />
+      <NewPost />
       <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
       <img src={imageOni} alt="Beautiful landscape" className="imageOni"/>
-    </div>
-      
+    </div>    
     </>
   );
 };
