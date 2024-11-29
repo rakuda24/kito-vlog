@@ -1,0 +1,148 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.AllPosts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; /* 他の要素の上に表示 */
+  background-color: #fff; /* 背景を明るく */
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+}
+
+/* 投稿全体のスタイル */
+.post {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  gap: 10px; /* タイトルと内容の間に余白を追加 */
+}
+
+/* 投稿全体のスタイル */
+.post {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  align-items: flex-start; /* 左寄せにする */
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  gap: 10px;
+}
+
+/* 内容部分のスタイル */
+.content {
+  text-align: left; /* テキストを左寄せにする */
+  flex: 1;
+}
+
+/* 削除ボタンのスタイル */
+.delete-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+/* 投稿日を右端に配置 */
+.created_at {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.9em;
+  color: #888;
+}
+
+/* 新規投稿フォームを画面下部に配置するためのスタイル */
+.NewPost {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+/* 削除ボタンのスタイル */
+.delete-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+/* 編集ボタンのスタイル */
+.edit-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  color: white;
+  background-color: blue;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: darkblue;
+}
+
+.username {
+  font-size: 1rem; /* 適切なサイズに調整 */
+  font-weight: bold; /* 必要に応じて太字に */
+  color: #333; /* 必要であれば色を変更 */
+  margin-bottom: 5px; /* ユーザー名と次の要素の間に余白を追加 */
+}
+@media (max-width: 600px) {
+  .username {
+    font-size: 0.9rem; /* モバイル向けに少し小さく調整 */
+  }
+}
+
+

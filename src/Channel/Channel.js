@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import anime from 'animejs/lib/anime.es.js';
 import imageSrc from './kitologo.png';
 import imageOni from './oni.png';
+import Allposts from './post/src/AllPosts'; 
+import NewPost from './post/src/NewPost';
 
 const Channel = () => {
   const navigate = useNavigate();
@@ -97,11 +99,10 @@ const Channel = () => {
               <li class="menu-button" onClick={showSidebar}><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
           </ul>
       </nav>
-      {/* <p>Channel</p>
+     {/* <p>Channel</p>
       <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
       <img src={imageOni} alt="Beautiful landscape" className="imageOni"/> */}
     </div>
-      
     </>
   );
 };
