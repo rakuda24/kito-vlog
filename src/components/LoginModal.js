@@ -47,7 +47,7 @@ const LoginModal = ({ show, handleClose, showSignUpModal }) => {
               <p className="mb-4">サインインするには:</p>
               <div className='text-center' >
                 <IoLogoGoogle
-                  style={{ color: '#1266f1', cursor: 'pointer' }}
+                  style={{ color: '#1266f1', cursor: 'none' }}
                   className="mb-4"
                   onClick={signInwithGoogle}
                   size={70}
@@ -76,17 +76,17 @@ const LoginModal = ({ show, handleClose, showSignUpModal }) => {
               <div className="d-flex justify-content-end mb-5 ">
                 <a href="./PasswordReset" className='' >パスワードを忘れてしまった場合</a>
               </div>
-              <button type="submit" className="btn btn-primary mb-5 w-100">サインイン</button>
+              <button type="submit" className="btn btn-primary mb-5 w-100" style={{cursor: 'none'}}>サインイン</button>
             </Form>
             <div className="text-center">
               <p>アカウントをお持ちではない方&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button variant="link" onClick={showSignUpModal}>登録する</Button>
+                <Button variant="link" onClick={showSignUpModal} style={{cursor: 'none'}}>登録する</Button>
               </p>
             </div>
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} style={{cursor: 'none'}}>
             閉じる
           </Button>
         </Modal.Footer>

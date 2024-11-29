@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import './Channel.css';
 import anime from 'animejs/lib/anime.es.js';
 import imageSrc from './kitologo.png';
-import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
 import imageOni from './oni.png';
 
 const Channel = () => {
@@ -99,9 +97,9 @@ const Channel = () => {
               <li class="menu-button" onClick={showSidebar}><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
           </ul>
       </nav>
-      <p>Channel</p>
+      {/* <p>Channel</p>
       <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
-      <img src={imageOni} alt="Beautiful landscape" className="imageOni"/>
+      <img src={imageOni} alt="Beautiful landscape" className="imageOni"/> */}
     </div>
       
     </>

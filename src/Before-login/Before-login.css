@@ -55,4 +55,9 @@
 
 button:hover {
   background-color: rgb(48, 117, 67);
+  cursor: none;
+}
+
+h1 {
+  font-family: "Hachi Maru Pop", cursive;
 }

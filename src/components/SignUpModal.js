@@ -53,7 +53,7 @@ const SignUpModal = ({ show, handleClose, showLoginModal }) => {
               <p className="mb-4">サインアップするには:</p>
               <div className='text-center' >
                 <IoLogoGoogle
-                  style={{ color: '#1266f1', fontSize: '25px', cursor: 'pointer' }}
+                  style={{ color: '#1266f1', fontSize: '25px', cursor: 'none' }}
                   className="mb-4"
                   onClick={signInwithGoogle}
                   size={70}
@@ -87,18 +87,18 @@ const SignUpModal = ({ show, handleClose, showLoginModal }) => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
-              <button type="submit" className="btn btn-primary mb-5 w-100">サインアップ</button>
+              <button type="submit" className="btn btn-primary mb-5 w-100" style={{cursor: 'none'}}>サインアップ</button>
             </Form>
             <div className="text-center" >
               <p>
                 すでにアカウントをお持ちの方は&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button variant="link" onClick={showLoginModal}>こちら</Button>
+                <Button variant="link" onClick={showLoginModal} style={{cursor: 'none'}}>こちら</Button>
               </p>
             </div>
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} style={{cursor: 'none'}}>
             閉じる
           </Button>
         </Modal.Footer>

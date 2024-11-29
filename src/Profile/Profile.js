@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import './Profile.css';
 import anime from 'animejs/lib/anime.es.js';
 import imageSrc from './kitologo.png';
-import { homeOutline, personCircleOutline, tvOutline, settingsOutline, idCardOutline, helpCircleOutline, exitOutline } from 'ionicons/icons';
 import imageOni from './oni.png';
 
 const AfterLogin = () => {
