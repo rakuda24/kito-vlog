@@ -12,6 +12,7 @@ import AfterLogin from './After-login/After-login.js';
 import BeforeLogin from './Before-login/Before-login.js';
 import Profile from './Profile/Profile.js';  
 import Channel from './Channel/Channel.js';
+import Porker from './Porker/Porker.js';
 
 function App() {
   // ログインしているユーザーの情報を管理するステート
@@ -75,6 +76,7 @@ function App() {
                 <Route path="/" element={<AfterLogin />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/channel" element={<Channel />} />
+                <Route path="/porker" element={<Porker />} />
               </>
             ) : (
               <Route path="/" element={<BeforeLogin />} />

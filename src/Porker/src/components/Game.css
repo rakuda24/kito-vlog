@@ -1,0 +1,92 @@
+/* App.css または Game.css に追加 */
+
+.game {
+  background-size: cover;  /* 画面全体に背景画像をフィットさせる */
+  background-position: center;  /* 画像の位置を中央に配置 */
+  background-attachment: fixed;  /* スクロールしても背景画像が固定されるようにする */
+  height: 100vh;  /* 画面の高さに合わせて背景を表示 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+  
+  /* カードの選択部分 */
+  .card-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* エラー表示 */
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* ダイアログ表示 */
+  .exchange-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+  }
+  
+  .card {
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .card-image {
+    width: 80px;
+    height: 120px;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: darkgreen;
+  }
+  
+  h3, h4 {
+    font-size: 24px;
+  }
+  
+  h4 {
+    margin-top: 10px;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: darkgreen;
+  }
+  
+  h3, h4 {
+    font-size: 24px;
+  }
+  
+  h4 {
+    margin-top: 10px;
+  }
+  

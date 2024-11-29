@@ -6,6 +6,7 @@ import imageSrc from './kitologo.png';
 import imageOni from './oni.png';
 import Allposts from './post/src/AllPosts'; 
 import NewPost from './post/src/NewPost';
+import './Channel.css';
 
 const Channel = () => {
   const navigate = useNavigate();
@@ -102,6 +103,8 @@ const Channel = () => {
      {/* <p>Channel</p>
       <img src={imageSrc} alt="KITO logo" className="kitologo-image" />
       <img src={imageOni} alt="Beautiful landscape" className="imageOni"/> */}
+      <Allposts/>
+      <NewPost/>
     </div>
     </>
   );

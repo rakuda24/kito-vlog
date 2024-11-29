@@ -1,0 +1,28 @@
+/* カードの基本スタイル */
+.card {
+    width: 80px;  /* カードの幅 */
+    height: 120px; /* カードの高さ */
+    margin: 5px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    font-size: 14px;  /* カード内のテキストのフォントサイズ */
+    cursor: pointer;
+    overflow: hidden; /* 画像がはみ出さないようにする */
+
+  }
+  
+  /* 選択されたカードのスタイル */
+  .card.selected {
+    border: 2px solid green;
+    background-color: #e0ffe0;
+  }
+  
+  /* カード画像のスタイル */
+  .card img {
+    width: 100%;  /* カードの幅に合わせて画像をリサイズ */
+    height: 100%; /* カードの高さに合わせて画像をリサイズ */
+  }
+  

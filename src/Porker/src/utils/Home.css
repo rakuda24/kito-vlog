@@ -1,0 +1,50 @@
+/* src/utils/Home.css */
+
+/* 全体の背景 */
+.home-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e8b57;  /* グリーンの背景色（ポーカーテーブル風） */
+  }
+  
+  /* ポーカーテーブル風のスタイル */
+  .table-background {
+    width: 80%;
+    height: 70%;
+    background-color: #006400;  /* ダークグリーンのテーブル */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 5px solid #003300;
+  }
+  
+  /* タイトルスタイル */
+  .title {
+    font-size: 3em;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  /* ゲーム開始ボタン */
+  .start-button {
+    font-size: 1.5em;
+    padding: 20px 40px;
+    background-color: #ffd700;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .start-button:hover {
+    background-color: #ffcc00;
+  }
+  
